@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-dark: #172B36;
+    --color-brand-teal: #114C5A;
+    --color-brand-light: #F1F6F4;
+    --color-brand-border: #D9E8E2;
+    --color-brand-yellow: #FFC801;
+    --color-brand-orange: #FF9932;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-brand-dark);
+  }
+
+  body {
+    background-color: var(--color-brand-dark);
+    color: var(--color-brand-light);
+  }
+}
+
+/* Custom Webkit Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #172B36;
+}
+::-webkit-scrollbar-thumb {
+  background: #114C5A;
+  border-radius: 4px;
+  border: 2px solid #172B36;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1d6e80;
+}
+
+/* Utility classes for premium aesthetics */
+.glass-panel {
+  background: rgba(17, 76, 90, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 232, 226, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(17, 76, 90, 0.25);
+  border-color: rgba(217, 232, 226, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 20px -3px rgba(17, 76, 90, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Subtle glow overlays */
+.glow-shape-teal {
+  background: radial-gradient(circle, rgba(17, 76, 90, 0.4) 0%, rgba(23, 43, 54, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.glow-shape-orange {
+  background: radial-gradient(circle, rgba(255, 153, 50, 0.15) 0%, rgba(23, 43, 54, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.glow-shape-yellow {
+  background: radial-gradient(circle, rgba(255, 200, 1, 0.12) 0%, rgba(23, 43, 54, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Grid & Dots backgrounds */
+.grid-background {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(217, 232, 226, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 232, 226, 0.03) 1px, transparent 1px);
+}
+
+.dot-background {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(217, 232, 226, 0.05) 1px, transparent 1px);
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pure CSS statistics counting animation logic */
+@property --num-projects {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+@property --num-revenue {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+@property --num-customers {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+@property --num-models {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+@property --num-automation {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: false;
+}
+
+@keyframes count-projects {
+  from { --num-projects: 0; }
+  to { --num-projects: 1420; }
+}
+@keyframes count-revenue {
+  from { --num-revenue: 0; }
+  to { --num-revenue: 48; }
+}
+@keyframes count-customers {
+  from { --num-customers: 0; }
+  to { --num-customers: 98; }
+}
+@keyframes count-models {
+  from { --num-models: 0; }
+  to { --num-models: 350; }
+}
+@keyframes count-automation {
+  from { --num-automation: 0; }
+  to { --num-automation: 99; }
+}
+
+.counter-projects {
+  counter-reset: num var(--num-projects);
+}
+.start-counting.counter-projects {
+  animation: count-projects 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.counter-projects::after {
+  content: counter(num);
+}
+
+.counter-revenue {
+  counter-reset: num var(--num-revenue);
+}
+.start-counting.counter-revenue {
+  animation: count-revenue 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.counter-revenue::after {
+  content: counter(num);
+}
+
+.counter-customers {
+  counter-reset: num var(--num-customers);
+}
+.start-counting.counter-customers {
+  animation: count-customers 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.counter-customers::after {
+  content: counter(num);
+}
+
+.counter-models {
+  counter-reset: num var(--num-models);
+}
+.start-counting.counter-models {
+  animation: count-models 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.counter-models::after {
+  content: counter(num);
+}
+
+.counter-automation {
+  counter-reset: num var(--num-automation);
+}
+.start-counting.counter-automation {
+  animation: count-automation 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.counter-automation::after {
+  content: counter(num);
+}
